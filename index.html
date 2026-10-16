@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#06c755" />
+    <meta name="description" content="家庭照護交接系統：紀錄照護、管理待辦，讓交接更安心。" />
+    <title>Care Hand｜家庭照護交接</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <a class="brand" href="#home" aria-label="Care Hand 首頁"><span class="brand-mark">c</span><span>care<span>hand</span></span></a>
+        <div class="family-switcher"><span class="family-avatar">林</span><span><strong>林家照護小組</strong><small>家庭空間</small></span><span class="chevron">⌄</span></div>
+        <p class="nav-label">照護工作區</p>
+        <nav class="primary-nav" aria-label="主要導覽">
+          <button class="nav-item active" data-view="home"><span class="nav-icon">⌂</span>首頁</button>
+          <button class="nav-item" data-view="records"><span class="nav-icon">▤</span>照護紀錄<span class="nav-count" id="record-nav-count">0</span></button>
+          <button class="nav-item" data-view="tasks"><span class="nav-icon">✓</span>待辦事項<span class="nav-count" id="task-nav-count">0</span></button>
+          <button class="nav-item" data-view="handoff"><span class="nav-icon">⇄</span>交接摘要</button>
+          <button class="nav-item" data-view="history"><span class="nav-icon">◷</span>交接歷史</button>
+          <button class="nav-item" data-view="members"><span class="nav-icon">♧</span>家庭成員</button>
+        </nav>
+        <div class="sidebar-bottom"><div class="privacy-box"><span>♧</span><p><strong>家庭資料僅供展示</strong><small>目前儲存在這台裝置</small></p></div><div class="signed-in"><span class="member-avatar avatar-green">安</span><span><strong id="sidebar-member-name">林小安</strong><small>Demo 使用者</small></span><span class="online-indicator"></span></div></div>
+      </aside>
+
+      <main class="main-area">
+        <header class="topbar"><div class="mobile-brand"><span class="brand-mark">c</span><strong>care<span>hand</span></strong></div><div class="breadcrumb"><span>林家照護小組</span><i>/</i><strong id="current-page-name">首頁</strong></div><div class="topbar-actions"><span class="mode-badge" id="mode-badge">Demo Mode</span><label class="user-select-label" for="current-member">使用者</label><select id="current-member" aria-label="選擇 Demo 使用者"></select><span class="member-avatar avatar-green top-avatar" id="top-avatar">安</span></div></header>
+
+        <div class="page-wrap">
+          <section class="page-view" id="view-home">
+            <div class="page-heading"><div><p class="eyebrow" id="today-eyebrow">今日照護</p><h1>早安，<span id="greeting-name">小安</span></h1><p class="subheading">一起把今天的照護安排好。</p></div><div class="heading-actions"><button class="button button-secondary" data-action="add-task"><span>＋</span> 新增待辦</button><button class="button button-primary" data-action="add-record"><span>＋</span> 新增紀錄</button></div></div>
+            <section class="elder-banner"><div class="elder-portrait">林<span>奶奶</span></div><div class="elder-info"><div class="elder-title"><h2>林奶奶</h2><span class="demo-data-label">虛構展示資料</span></div><p>今天的照護狀況一覽</p></div><div class="banner-divider"></div><div class="banner-meta"><span>今天日期</span><strong id="today-date"></strong></div><button class="button button-light" data-view="handoff">查看交接摘要 <span>→</span></button></section>
+            <div class="stats-grid"><article class="stat-card"><span class="stat-icon icon-green">▤</span><div><span class="stat-label">今日照護紀錄</span><strong id="stat-records">0</strong></div><span class="stat-foot">則紀錄</span></article><article class="stat-card"><span class="stat-icon icon-blue">✓</span><div><span class="stat-label">已完成任務</span><strong id="stat-done">0</strong></div><span class="stat-foot">項完成</span></article><article class="stat-card"><span class="stat-icon icon-orange">◷</span><div><span class="stat-label">待處理任務</span><strong id="stat-pending">0</strong></div><span class="stat-foot">項待辦</span></article></div>
+            <div class="dashboard-grid"><section class="panel"><div class="panel-heading"><div><p class="eyebrow">LATEST UPDATES</p><h2>最近照護紀錄</h2></div><button class="link-button" data-view="records">查看全部 <span>→</span></button></div><div id="home-records" class="compact-list"></div></section><section class="panel"><div class="panel-heading"><div><p class="eyebrow">UP NEXT</p><h2>尚未完成的待辦</h2></div><button class="link-button" data-view="tasks">管理待辦 <span>→</span></button></div><div id="home-tasks" class="task-list compact-tasks"></div></section></div>
+            <section class="handoff-callout"><div class="callout-icon">⇄</div><div><strong>要交班給下一位家人了嗎？</strong><p>快速查看今天的照護紀錄和待處理事項。</p></div><button class="button button-light" data-view="handoff">整理交接摘要 <span>→</span></button></section>
+          </section>
+
+          <section class="page-view is-hidden" id="view-records"><div class="page-heading"><div><p class="eyebrow">CARE JOURNAL</p><h1>照護紀錄</h1><p class="subheading">把照護過程中的重要時刻記錄下來。</p></div><button class="button button-primary" data-action="add-record"><span>＋</span> 新增紀錄</button></div><div class="toolbar"><div class="toolbar-note"><span class="tiny-dot"></span> 最新紀錄排在最前面</div><span class="toolbar-total" id="records-total">0 則紀錄</span></div><div id="records-list" class="record-list"></div></section>
+
+          <section class="page-view is-hidden" id="view-tasks"><div class="page-heading"><div><p class="eyebrow">CARE CHECKLIST</p><h1>照護待辦</h1><p class="subheading">分清楚誰負責、什麼時候要完成。</p></div><button class="button button-primary" data-action="add-task"><span>＋</span> 新增待辦</button></div><div class="task-summary-strip" id="task-summary-strip"></div><div id="tasks-list" class="task-list full-task-list"></div></section>
+
+          <section class="page-view is-hidden" id="view-handoff"><div class="page-heading"><div><p class="eyebrow">FAMILY HANDOVER</p><h1>交接摘要</h1><p class="subheading">根據目前紀錄整理，讓下一位照顧者快速掌握狀況。</p></div><span class="generated-time" id="generated-time"></span></div><div class="handoff-banner"><div class="handoff-symbol">⇄</div><div><strong id="handoff-date-title">今日照護交接</strong><p>摘要只整理系統中已有的紀錄和待辦。</p></div><span class="source-badge">依實際資料整理</span></div><div class="handoff-grid"><section class="panel handoff-main"><div class="panel-heading"><div><p class="eyebrow">CARE SUMMARY</p><h2>今日照護概況</h2></div><span class="summary-update" id="summary-updated"></span></div><div id="handoff-content"></div></section><aside class="panel handoff-aside"><p class="eyebrow">NEXT CAREGIVER</p><h2>閱讀並接手</h2><p class="aside-copy">確認已閱讀以上資訊，下一位家人就能知道你已經接手。</p><label class="handoff-select-label" for="handoff-member">接手者</label><select id="handoff-member" class="form-control"></select><button class="button button-primary full-button" id="confirm-handoff">我已閱讀並接手 <span>→</span></button><p class="confirm-note" id="confirm-note">確認後會記錄接手者和時間。</p><div class="aside-separator"></div><strong class="mini-title">摘要包含</strong><ul class="includes-list"><li>今日照護紀錄</li><li>已完成與待處理任務</li><li>照護者留下的備註</li></ul></aside></div></section>
+
+          <section class="page-view is-hidden" id="view-history"><div class="page-heading"><div><p class="eyebrow">HANDOVER ARCHIVE</p><h1>交接歷史</h1><p class="subheading">查看每次交接的內容和接手確認。</p></div><span class="history-count" id="history-count">0 次交接</span></div><div id="history-list" class="history-list"></div></section>
+
+          <section class="page-view is-hidden" id="view-members"><div class="page-heading"><div><p class="eyebrow">YOUR CARE TEAM</p><h1>家庭成員</h1><p class="subheading">認識一起照顧林奶奶的家人。</p></div><span class="demo-data-label">展示用模擬成員</span></div><div class="members-intro"><span>♧</span><p>Demo 版本先用模擬成員展示分工。正式邀請和帳號驗證會在後續 LIFF／後端階段加入。</p></div><div id="members-list" class="members-grid"></div></section>
+        </div>
+        <footer class="app-footer"><span>Care Hand <i>·</i> 家庭照護交接</span><span>Demo Mode　資料僅儲存在目前瀏覽器</span></footer>
+      </main>
+      <nav class="mobile-nav" aria-label="底部導覽"><button class="mobile-nav-item active" data-view="home"><span>⌂</span><small>首頁</small></button><button class="mobile-nav-item" data-view="records"><span>▤</span><small>紀錄</small></button><button class="mobile-nav-item" data-view="tasks"><span>✓</span><small>待辦</small></button><button class="mobile-nav-item" data-view="handoff"><span>⇄</span><small>交接</small></button><button class="mobile-nav-item" data-view="history"><span>◷</span><small>歷史</small></button><button class="mobile-nav-item" data-view="members"><span>♧</span><small>家人</small></button></nav>
+    </div>
+
+    <dialog class="form-dialog" id="form-dialog"><div class="dialog-top"><div><p class="eyebrow" id="dialog-kicker">CARE UPDATE</p><h2 id="dialog-title">新增照護紀錄</h2></div><button class="dialog-x" data-close-dialog aria-label="關閉">×</button></div><p class="dialog-description" id="dialog-description">記下家人需要知道的照護資訊。</p><form id="entry-form"></form></dialog>
+    <dialog class="detail-dialog" id="detail-dialog"><button class="dialog-x detail-x" data-close-detail aria-label="關閉">×</button><div id="record-detail"></div></dialog>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="./config.js"></script><script src="./storage.js"></script><script src="./liff.js"></script><script src="./app.js"></script>
+  </body>
+</html>
