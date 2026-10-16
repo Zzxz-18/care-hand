@@ -3,7 +3,7 @@
     return new Promise((resolve, reject) => {
       if (window.liff) return resolve();
       const script = document.createElement("script");
-      script.src = "https://static.line-scdn.net/liff/edge/versions/2.31.1/sdk.js";
+      script.src = "https://static.line-scdn.net/liff/edge/versions/2.31.2/sdk.js";
       script.onload = resolve;
       script.onerror = () => reject(new Error("LIFF SDK 載入失敗"));
       document.head.append(script);
