@@ -6,6 +6,10 @@
 
 直接用瀏覽器開啟 `index.html`。未設定 LIFF ID 時，系統會以 Demo Mode 啟動，並使用虛構的林家照護資料。
 
+## 執行 smoke tests
+
+安裝 Node.js 後，在專案資料夾執行 `node --test tests/smoke.test.js`。測試會檢查 Demo 資料初始化、本機儲存與重設，以及 MVP 頁面和必填欄位。
+
 ## MVP 功能
 
 - 首頁：今日紀錄、任務摘要、最近紀錄、未完成待辦與交接入口。
